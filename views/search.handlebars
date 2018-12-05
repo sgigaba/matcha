@@ -1,0 +1,68 @@
+
+
+<br>
+<div class="form-group col-md-4">
+<form action = "custom" method = "POST" >
+     <p>Filter by age </p>
+      <input type = "number" name = "minage">
+    <input type = "number" name = "maxage">
+
+   <select class="form-control"  name = "location" id="inputState">
+    <option>Distance in km</option>
+    <option name = "30">30</option>
+     <option name = "50">50</option>
+     <option name = "100">100</option>
+     <option name = "500">500</option>
+     <option name = "Any">Any</option>
+   </select>
+
+<p> Filter by fame</p>
+  <input type = "number" name = "minrating">
+    <input type = "number" name = "maxrating">
+  <br>
+  <p> Filter by tags</p>
+  <label class="checkbox-inline"><input type="checkbox" name = "tags" value="food"> #Food<i class="fas fa-apple-alt"></i> </label>
+<label class="checkbox-inline"><input type="checkbox" name = "tags" value="music">#music<i class="fas fa-music"></i></label>
+<label class="checkbox-inline"><input type="checkbox" name = "tags" value="politics">#politics<i class="fab fa-galactic-republic"></i></label>
+  <label class="checkbox-inline"><input type="checkbox" name = "tags" value="sports">#sports<i class="fas fa-futbol"></i> </label>
+<label class="checkbox-inline"><input type="checkbox" name = "tags" value="netflix">#netflixandchill <i class="fas fa-tv"></i></label>
+<label class="checkbox-inline"><input type="checkbox" name = "tags" value="family">#family<i class="fas fa-child"></i></label>
+<br>
+   {{!-- <select class="form-control"  name = "reptions" id="exampleFormControlSelect1">
+     <option>Relationship</option>
+    <option name = "value1" value = "causal">Causual</option>
+     <option name = "long">Long term relationship</option>
+     <option name = "friendship">Friendship</option>
+     <option name = "other">genderfluid</option>
+   </select> --}}
+
+
+   <button class="btn btn-warning" >Custom search</button>
+ </div>
+</form>
+<br>
+<a href = "/history"><button class="btn btn-lg btn-secondary" >View history</button></a>
+<a href = "block"><button class="btn btn-lg btn-danger" >Blocked Users</button></a>
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-lg-6 mt-50">
+      <div class="panel panel-primary">
+      {{#each pp}}
+       <div class="panel-heading"><h3>{{this.username}}</h3></div>
+        <div class="panel-body"><img src="uploads{{this.path}}" class="img-responsive" style= "width:350px" alt="Image"></div>
+                <div class="panel-footer">
+        
+                <form action = "/viewprofile" method = "POST" style = "display:inline">
+                <input type = "hidden" name = "profile" value = "{{this.username}}">
+                 <input type = "hidden" name = "profilepic" value = "{{this.path}}">
+               <button type = "submit" name = "submit" class="btn btn-lg btn-danger" >View Profile</button>
+                <button class="btn btn-lg btn-info" ><i class="fas fa-fire"></i>{{this.fame}}</button>
+               </form>
+          <button class="btn btn-outline-dark" > <i class="fas fa-map-marked-alt"></i>{{this.tempdist}}km</i></button>
+                  </div>
+        {{/each}}
+        
+      </div>
+    </div>
+    </div>
+    </div>

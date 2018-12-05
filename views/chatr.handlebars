@@ -1,0 +1,38 @@
+
+<div id="container chatapp">
+    <div class="row">
+        <div class="col-12 col-md-6">
+        </div>
+        <div class="col-12 col-md-6">
+            <div id="chat-window">
+                <div id="output">
+                    <div class="row">
+                        {{#each history}}
+                        <div class="col-12 single-message">
+                            <div {{#ifEquals this.from ../user}} class="user-message-container" {{/ifEquals}}
+                                {{#ifnotEquals this.from ../user}} class="not-user-message-container" {{/ifnotEquals}}>
+                                <div class="user-message">{{this.message}}</div>
+                            </div>
+                        </div>
+                        {{/each}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="form-container">
+    <div class="row">
+        <div class="col-12 col-md-12 d-flex justify-content-end">
+            <input type="hidden" id="handle" value="{{user}}">
+            <input type="hidden" id="intended" value="{{intended}}">
+            <input id="message" type="text" placeholder="message" style="width : 300px;height: 50px">
+            <button class="btn btn-lg btn-success" id="send"> Send </button>
+        </div>
+    </div>
+</div>
+
+
+<hr>
+<hr>
+<hr>

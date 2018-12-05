@@ -1,0 +1,46 @@
+<div class="container-fullwidth">
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		{{#if off}}
+		<a class="navbar-brand" href="/"> Matcha </a>
+		{{/if}}
+		{{#if in}}
+		<a class="navbar-brand" href="search"> Matcha </a>
+		{{/if}}
+		{{#if in}}
+         <a class = "navbar-brand" href = "notifications"> <i class="far fa-bell"></i> {{num}} <div style = "display:inline" id = "not"></div> </a>
+		    <a class = "navbar-brand" href = "mesnot"><i class="fas fa-envelope"></i> {{mnum}} <div style = "display:inline" id = "mess"></div> </a>
+		 {{/if}}
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav ml-auto">
+				{{#if off}}
+				<li class="nav-item">
+					<a class="nav-link" href="signup"> Signup </a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="login"> Login </a>
+				</li>
+				{{/if}}
+				{{#if in}}
+				<li class="nav-item">
+					<a class="nav-link" href="logout"> Logout </a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="loggedin"> Edit Profile </a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="homepage"> Homepage </a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="matches"> <i class="fas fa-hand-holding-heart"></i> </a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="search"> <i class="fas fa-search"></i> </a>
+				</li>
+				{{/if}}
+			</ul>
+		</div>
+	</nav>
+</div>

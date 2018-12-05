@@ -1,0 +1,136 @@
+body {
+	font-family: 'PT Sans', sans-serif;
+}
+
+.bg-1{
+	background-color: grey;
+}
+
+/* #chatapp {
+    border: 2px solid #dedede;
+    background-color: #f1f1f1;
+    border-radius: 5px;
+    padding: 400px;
+    margin: auto;
+} */
+#chat-window {
+    border: 2px solid #dedede;
+    background-color: #f1f1f1;
+    border-radius: 5px;
+    padding: 30px;
+	margin: 10px 0;
+	height: 300px;
+	overflow : scroll;
+}
+
+#notification {
+    border: 2px solid #dedede;
+    background-color: pink;
+    border-radius: 5px;
+    padding: 10px;
+	margin: 10px 0;
+}
+
+#bg8{
+	background-image: url("cool-background.png");
+	position: fixed;
+	top: 0;
+	left: 0;
+
+	z-index: -99;
+	/* Preserve aspet ratio */
+	min-width: 100%;
+	min-height: 100%;
+}
+
+#bg-image {
+	background-image: url("pexels-photo-211709.jpeg");
+	position: fixed;
+	top: 0;
+	left: 0;
+
+	z-index: -99;
+	/* Preserve aspet ratio */
+	min-width: 100%;
+	min-height: 100%;
+}
+
+.bg3 {
+	background-image: url("blue-blue-background-botanical-1445416.jpg");
+	position: fixed;
+	top: 0;
+	left: 0;
+	background-repeat:0;
+	z-index: -99;
+	/* Preserve aspet ratio */
+	min-width: 100%;
+	min-height: 100%;
+}
+
+.bg5 {
+	background-image: url("blue-blue-background-botanical-1445416.jpg");
+	position: fixed;
+	top: 0;
+	left: 0;
+	background-repeat:0;
+	z-index: -99;
+	/* Preserve aspet ratio */
+	min-width: 100%;
+	min-height: 100%;
+}
+
+.hps{
+	border : 2px solid grey;
+}
+
+.shadow {
+	-webkit-box-shadow: 6px 6px 22px 0px rgba(0, 0, 0, 0.4);
+	-moz-box-shadow: 6px 6px 22px 0px rgba(0, 0, 0, 0.4);
+	box-shadow: 6px 6px 22px 0px rgba(0, 0, 0, 0.4);
+}
+
+.card-container {
+	height: 150px;
+	padding-top: 10px;
+}
+.scroll-container {
+	padding-top: 20px;
+}
+.card-icon {
+	font-size: 2em;
+}
+
+ul.nav-pills {
+	top: 300px;
+	position: fixed;
+}
+
+.padding-inner {
+	padding: 20px;
+}
+
+div.col-8 div {
+	height: 300px;
+}
+
+.user-message-container {
+	font-size: 15px;
+	color: white;
+	padding: 10px;
+	float: right;
+	background-color: darkturquoise;
+	border-radius: 10px 10px 0px 10px;
+}
+
+.not-user-message-container {
+	font-size: 15px;
+	color: white;
+	padding: 10px;
+	float: left;
+	background-color: teal;
+	border-radius: 10px 10px 0px 10px;
+}
+
+.single-message {
+	padding: 5px;
+}

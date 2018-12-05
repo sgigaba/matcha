@@ -1,0 +1,21 @@
+<h1> Pending Matches </h1>
+
+<div class="container">    
+  <div class="row">
+    <div class="col-sm-12 mt-10">
+      <div class="panel panel-primary">
+      {{#each pm}}
+       <div class="panel-heading">{{this.username}}</div>
+        <div class="panel-body"><img src="uploads{{this.profile}}" class="img-responsive" style="width:100%" alt="Image"></div>
+                <div class="panel-footer">
+                <form action = "/search" method = "POST">
+                <input type = "hidden" value = "{{this.username}}" name = "name">
+                  <input type = "hidden" value = "{{this.profilepic}}" name = "profilepic">
+                <button type = "submit" name = "submit" value = "submit"> <i class="fas fa-heart"></i> </button>
+                </form>
+                </div>
+        {{/each}}
+      </div>
+    </div>
+    </div>
+    </div>

@@ -1,0 +1,65 @@
+
+<div class="container bg3">
+  <img src="uploads{{pp}}" class="rounded-circle" width="350" height="236">
+</div>
+
+<div class="container" style="margin-top:300px">
+
+  <img src = "">
+  <div class="row">
+    <div class="col-sm-4">
+      <h1 class="font-weight-bold"> {{Profile}} </h1>
+      <h3 class="font-weight-bold">Age </h3>
+      <p> {{myage}}</p>
+      <h2 class="font-weight-bold"> Gender</h2>
+      <p>{{gender}} </p>
+      <h2 class="font-weight-bold">Bio</h2>
+        <p>{{Bio}}</p>
+     <h2 class="font-weight-bold"> Interest Tags </h2>
+     <button class="btn btn-outline-dark">#{{tags}}</i></button>
+      <hr class="d-sm-none">
+    </div>
+    <div class="col-sm-8">
+      <h2 class="font-weight-bold">What I'm looking for: </h2>
+    <h5 class="font-weight-bold"> Gender Preferences</h5>
+<p>{{Genderpref}} </p>
+<h5 class="font-weight-bold"> Relationship Preferences</h5>
+<p> {{relationship }}</p>
+<h5 class="font-weight-bold"> Age Preferences</h5>
+<p> {{age}} </p>
+    </div>
+  </div>
+</div>
+
+<div class="container bg3">
+  <h3 class="margin">{{Profile}}</h3>
+  <img src="uploads{{pp}}" class="rounded-circle" width="350" height="236">
+</div>
+
+<div class="container bg3">
+  <h3 class="margin">{{Profile}}</h3>
+  <img src="uploads{{pp}}" class="rounded-circle" width="350" height="236">
+</div>
+
+<div class="container bg3">
+  <h3 class="margin">{{Profile}}</h3>
+  <img src="uploads{{pp}}" class="rounded-circle" width="350" height="236">
+</div>
+
+
+<center><h3> Upload images</h3></center>
+<hr>
+<hr>
+<h5> Upload up to 5 images to increase your chances of finding a match !</h5>
+      <form method = "POST" action = "/pics" enctype="multipart/form-data">
+        <input type = "file" name = "filetoupload" required>
+        <br>
+         <button type = "submit" name = "submit"> Upload </button>
+            </form>
+  {{#each pic}}
+    <form method = "POST" action = "homepage" style = "display:inline">
+    <input type = "hidden" name = "name" value = "{{this.pics}}">
+  <img src="img/uploads{{this.pics}}" class="rounded-circle" width="150" height="180">
+    <button type = "submit" class = "btn btn-sm btn-dark"> Delete Image </button>
+  </form>
+  {{/each}}

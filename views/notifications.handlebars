@@ -1,0 +1,26 @@
+<div class = "container">
+
+<h1> Incoming </h1>
+
+{{#each notifs}}
+<div id = "notification">
+<i class="far fa-thumbs-up"></i>{{this.user}} just {{this.type}} <br>
+</div>
+{{/each}}
+
+<hr> 
+<hr>
+<hr>
+<h1> Outgoing </h1>
+{{#each outgoing}}
+<div id = "notification">
+<i class="fas fa-eye"></i>{{this.username}} has not read your notification <br>
+</div>
+{{/each}}
+{{#each read}}
+<div id = "notification">
+<i class="fas fa-check-double"></i>{{this.username}} has read your notification <br>
+</div>
+{{/each}}
+
+</div>
