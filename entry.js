@@ -54,9 +54,6 @@ console.log("Listening on server 3000");
 });
 
 var io = socket(server);
-
-
-
 app.use(express.static(__dirname + '/public'));
 
 io.on('connection', function(socket){

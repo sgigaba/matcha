@@ -1,7 +1,18 @@
 <div class = "container">
     <form role = "form" action = "/signup" method = "POST">
 
-        <div class="form-group mt-5">
+ <div class="form-group mt-5">
+        <label for="firstname">First name</label>
+        <input type="text" class="form-control" id="firstname" placeholder="Enter your first name" name = "firstname" required>
+        {{#if error}}
+      Your first name can not contain any numbers or special characters
+        {{/if}}
+      </div>
+      <div class="form-group">
+        <label for="lastname">Last name</label>
+        <input type="text" class="form-control" id="lastname" placeholder="Enter your last name" name = "lastname" required>
+        </div>
+        <div class="form-group">
         <label for="Username">Username</label>
         <input type="text" class="form-control" id="username" placeholder="Username" name = "username" required>
       </div>
@@ -19,10 +30,6 @@
         <label for="exampleInputAge1">Age</label>
         <input type="number" class="form-control" min = "18" id="exampleInputPassword1" placeholder="age" name = "age" required>
                         <small id="emailHelp" class="form-text text-muted">You must be 18 and over to sign up</small>
-      </div>
-      <div class="form-group form-check">
-        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-        <label class="form-check-label" for="exampleCheck1">Check me out</label>
       </div>
       <button type="submit" class="btn btn-primary">Submit</button>
     </form>

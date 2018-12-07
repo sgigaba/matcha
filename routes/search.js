@@ -33,7 +33,8 @@ db.query("SELECT * FROM `notifications` WHERE username = '"+sesh.email+"' AND vi
     for(v = 0; resu[v]; v++){
         console.log("liked");
     }
- 
+
+
 db.query("SELECT * FROM profile WHERE `username` = '"+sesh.email+"'", function(req, resul){
   var gen = resul[0].gender;
   var anygen = resul[0].gender;
