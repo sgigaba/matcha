@@ -1,30 +1,42 @@
+
+
 <div class = "container">
+              {{#if taken}}
+<p style = "color:red"> *Unfortunately this username or email has already been used to sign up</p>
+{{/if}}
+              {{#if error}}
+<p style = "color:red"> *Please make sure your details meet the requirements</p>
+{{/if}}
     <form role = "form" action = "/signup" method = "POST">
+
 
  <div class="form-group mt-5">
         <label for="firstname">First name</label>
-        <input type="text" class="form-control" id="firstname" placeholder="Enter your first name" name = "firstname" required>
-        {{#if error}}
-      Your first name can not contain any numbers or special characters
-        {{/if}}
+    <input type="text"  data-toggle = "popover1" data-placement = "left" data-content = "Must only contain letters"  class="form-control" id="firstname" placeholder="Enter your first name" name = "firstname" required>
       </div>
       <div class="form-group">
         <label for="lastname">Last name</label>
-        <input type="text" class="form-control" id="lastname" placeholder="Enter your last name" name = "lastname" required>
+      <input type="text" class="form-control" data-toggle = "popover1" data-placement = "left" data-content = "Must only contain letters" id="lastname" placeholder="Enter your last name" name = "lastname" required>
         </div>
         <div class="form-group">
         <label for="Username">Username</label>
-        <input type="text" class="form-control" id="username" placeholder="Username" name = "username" required>
+        <input type="text" class="form-control" data-toggle = "popover1" data-placement = "left" data-content = "Must only contain letters, max 10 characters" id="username" placeholder="Username" name = "username" required>
       </div>
+  
       <div class="form-group">
         <input type = "hidden" name = "_csrf" value = "{{csrf}}">
         <label for="exampleInputEmail1">Email address</label>
+        <div id = "invalidemail"> </div>
         <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" name = "email" required>
         <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
       </div>
       <div class="form-group">
         <label for="exampleInputPassword1">Password</label>
-        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name = "password" required>
+        <input type="password" data-toggle = "popover1" data-placement = "left" data-content = "Minimum of 8 characters, must contain atleast one special char" class="form-control" id="exampleInputPassword1" placeholder="Password" name = "password" required>
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Password</label>
+        <input type="password" data-toggle = "popover1" data-placement = "left" data-content = "Retype your password" class="form-control" id="exampleInputPassword1" placeholder="Confirm Password" name = "confirmpassword" required>
       </div>
          <div class="form-group">
         <label for="exampleInputAge1">Age</label>

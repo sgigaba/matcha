@@ -3,6 +3,9 @@ var mysql = require('mysql')
 var app = express();
 const bcrypt = require('bcrypt');
 const nodemailer = require('nodemailer'); 
+const jsdom = require("jsdom");
+
+const { JSDOM } = jsdom;
 
 SALT_ROUNDS = 10;
 app.get('/', function (req, res) {
@@ -12,40 +15,102 @@ app.get('/', function (req, res) {
     });
 });
 
-function valid($lastname, $firstname, $password, $email){
-    console.log(lastname);
-    var match = /[\W]/i;
-    if (lastname.match(match)){
-        return "match";
+function valid(lastname, firstname, username, password, confirm, email){
+    if (password != confirm){
+        console.log("not equal");
+        return "false";
     }
     else
     {
+    if (password.length < 8)
+    {
         return "false";
+    }
+    else
+    {
+        var match = /[\W]/i;
+        if (!(password.match(match))){
+            return "false";
+        }
+    }
+    }
+    var validname = /[\W+\d]/i;
+    if (firstname.match(validname) || lastname.match(validname)){
+        return "false";
+    }
+    if (username.length > 10){
+        return "false";
+    }
+    else
+    {
+        if (username.match(validname)){
+            return "false";
+        }
+
     }
 }
 
+function databasematch(email, username, callback){
+    db.query("SELECT * FROM `PROFILE` WHERE `username` = '"+username+"'", function(err, result){
+        if (result[0] != undefined)
+        {
+            callback(null, "yay");
+        }
+        else{
+            callback(null, "nay");
+        }
+        db.query("SELECT * FROM `PROFILE` WHERE `email` = '"+email+"'", function(err, resulta){
+            if (resulta[0] != undefined){
+            callback(null, "yay");
+            }
+            else{
+                callback(null, "nay");
+            }
+        });
+    });
+}
+
 app.post('/', function (req, res) {
-    console.log('Form : ' + req.query.form);
-    console.log('CSRF token :' + req.body._csrf);
+    // console.log('Form : ' + req.query.form);
+    // console.log('CSRF token :' + req.body._csrf);
     email = req.body.email;
     username = req.body.username;
     password = req.body.password;
     age = req.body.age;
     firstname = req.body.firstname;
     lastname = req.body.lastname;
-    console.log(firstname + " " + lastname);
+    confirm = req.body.confirmpassword;
     
-    var isitval = valid(lastname, firstname, password, email);
+    var isitval = valid(lastname, firstname, username, password, confirm, email);
+    if (isitval == "false"){
 
-    if (isitval == "match"){
-        console.log("wroooong");
-        res.render('signup', {
-            off : true,
-            error : true
+ 
+        var invalid = Document.getElementById("invalidemail");
+    
+        invalid.innerHTML = "Invalid input";
 
-        });
+        // console.log("wroooong");
+        // res.render('signup', {
+        //     off : true,
+        //     error : true
+        // });
     }
-  
+    else
+    {
+    databasematch(email, username, function(err, resulta){
+        if (resulta == "yay"){
+            console.log("wooow");
+            // res.render('signup', {
+            //     taken : true,
+            //     off : true
+            // });
+        }
+        else
+        {
+            console.log("good to go");
+        }
+    });
+    }
     // var rand = Math.trunc(Math.random() * (100000));
     // bcrypt.genSalt(SALT_ROUNDS, function (err, salt) {
     //     bcrypt.hash(password, salt, function (err, hash) {

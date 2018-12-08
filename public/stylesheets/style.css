@@ -56,7 +56,8 @@ body {
 }
 
 .bg3 {
-	background-image: url("blue-blue-background-botanical-1445416.jpg");
+	background-color: #b79aca;
+	/* background-image: url("blue-blue-background-botanical-1445416.jpg"); */
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -68,7 +69,7 @@ body {
 }
 
 .bg5 {
-	background-image: url("blue-blue-background-botanical-1445416.jpg");
+	background-color: #b79aca;
 	position: fixed;
 	top: 0;
 	left: 0;
