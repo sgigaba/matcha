@@ -84,10 +84,11 @@ app.post('/', function (req, res) {
     var isitval = valid(lastname, firstname, username, password, confirm, email);
     if (isitval == "false"){
 
- 
-        var invalid = Document.getElementById("invalidemail");
+        const dom = new JSDOM(`<!DOCTYPE html><p>Hello world</p>`);
+        console.log(dom.window.document.querySelector("invalidemail").textContent);
+        // var invalid = Document.getElementById("invalidemail");
     
-        invalid.innerHTML = "Invalid input";
+        // invalid.innerHTML = "Invalid input";
 
         // console.log("wroooong");
         // res.render('signup', {

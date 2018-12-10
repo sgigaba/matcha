@@ -74,6 +74,11 @@ db.query("SELECT * FROM potential WHERE (`username` = '"+prof+"' OR `username` =
             halfconnec = true;
          }  
 }
+var able;
+db.query("SELECT path FROM `profile` WHERE `username` = '"+sesh.email+"'", function(req, res1){
+if (res1[0]){
+    able = true;
+}
 
 res.render('viewprofile', {
     in: true,
@@ -90,7 +95,9 @@ res.render('viewprofile', {
     fullconnec : fullconnect,
     myage: results[0].age,
     tags : results[0].tags,
-    online: online
+    online: online,
+    able : able
+});
 });
   });
 });
