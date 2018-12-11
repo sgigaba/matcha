@@ -51,11 +51,12 @@ var prof = req.body.profile;
 db.query("SELECT * FROM profile WHERE `username` = '"+req.body.profile+"'", function(req, results){
 console.log("here in the view");
 var one = 1;
+var uhalfconnec;
 var halfconnec;
 var fullconnect;
 var tags;
 var online;
-
+var can;
 if (results[0].logouttime == 0){
    online = "online";
 }
@@ -68,18 +69,23 @@ db.query("SELECT * FROM potential WHERE (`username` = '"+prof+"' OR `username` =
              console.log("full connect boi");
             fullconnect = true;
          }
-         else{
+         else if (respacito[0].uliked == 1 && respacito[0].username == sesh.email){
              console.log("nah b");
             console.log(respacito);
-            halfconnec = true;
-         }  
+            can = false;
+            uhalfconnec = true;
+         }
+         else if (respacito[0].uliked == 1 && respacito[0].username == prof){
+            console.log("nah b");
+           console.log(respacito);
+           halfconnec = true;
+        } 
 }
 var able;
 db.query("SELECT path FROM `profile` WHERE `username` = '"+sesh.email+"'", function(req, res1){
 if (res1[0]){
     able = true;
 }
-
 res.render('viewprofile', {
     in: true,
     Profile:results[0].username,
@@ -93,10 +99,12 @@ res.render('viewprofile', {
     pic:pic,
     halfconnec: halfconnec,
     fullconnec : fullconnect,
+    uhalfconnec : uhalfconnec,
     myage: results[0].age,
     tags : results[0].tags,
     online: online,
-    able : able
+    able : able,
+    can : can
 });
 });
   });

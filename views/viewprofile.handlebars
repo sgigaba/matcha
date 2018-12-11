@@ -2,7 +2,6 @@
  <img src="uploads{{pp}}" width="300px" class="rounded" height="300px">
 </div>
 <button class = "btn btn-success"><i class="fas fa-check"></i>{{online}} </button>
-
 <div class="container" style="margin-top:330px; margin-left: 0px">
   {{#if able}}
      <form action = "/search" method = "POST" style = "display:inline">
@@ -21,8 +20,11 @@
     <button type = "submit" class="btn btn-danger" ><i class="fas fa-unlink"></i></button>
     </form>
     {{/if}}
-  {{#if halfconnec}}
-<button data-toggle = "tooltip" class = "btn btn-warning" title = "This user has liked you!"><i class="fas fa-star-half"></i></button>
+  {{#if uhalfconnec}}
+<button data-toggle = "tooltip" class = "btn btn-warning" title = "You have liked this user!"><i class="fas fa-star-half"></i></button>
+{{/if}}
+{{#if halfconnec}}
+<button data-toggle = "tooltip" class = "btn btn-warning" title = "This user has liked your profile!"><i class="fas fa-star-half"></i></button>
 {{/if}}
 {{#if fullconnec}}
 <button data-toggle = "tooltip2" class = "btn btn-warning" title = "You are now connected"> Connected <i class="fas fa-star"></i></i></button>
@@ -37,7 +39,8 @@
   <form action = "/block" method = "POST" style = "display:inline">
   <input type = "hidden" name = "user" value = "{{Profile}}">
   <input type = "hidden" name = "path" value = "{{pp}}">
-      <button type = "submit" class="btn btn-danger" >Block</button>
+  <input type = "hidden" name = "block" value = "block">
+      <button type = "submit" name = "block" class="btn btn-danger" >Block</button>
   </form>
   <form action = "/report" method = "POST" style = "display:inline">
   <input type = "hidden" name = "name" value = "{{Profile}}">

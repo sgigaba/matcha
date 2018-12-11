@@ -1,13 +1,48 @@
 <div class = "container">
     <div class = "row">
             <form action = "deets" method = "POST">
-            <p> Current username : {{username}}</p> <p> Change username : <input type = "text" name = "username"></p>
+              {{#if error}}
+            <p style = "color:red"> *{{errorMessage}}</p>
+              {{/if}}
+              {{#if derror}}
+            <p style = "color:red"> *Username cannot contain numbers or special characters </p>
+              {{/if}}
+            <h4 class="font-weight-bold"> Current username : {{username}}</h4> 
+
+ <div class="form-group">
+        <label for="firstname">Change username</label>
+    <input type="text"  data-toggle = "popover1" data-placement = "left" data-content = "Must only contain letters"  class="form-control" id="firstname" placeholder="Enter your first name" name = "username">
+      </div>
             <hr>
-            <p> Current email : {{email}} </p> <p> Change email : <input type = "email" name = "email"></p>
+            <h4 class="font-weight-bold"> Current email : {{email}} </h4>
+
+        <div class="form-group">
+        <label for="exampleInputEmail1">Change email adress</label>
+        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" name = "email">
+        <small id="emailHelp" class="form-text text-muted">We will never share your email with anyone else.</small>
+      </div>
+
             <hr>
-            <p> Current age : {{age}}</p> <p> Change age: <input type = "number" min = "18" name = "age"></p>
+            <h4 class="font-weight-bold"> Current age : {{age}}</h4>
+
+               <div class="form-group">
+        <label for="exampleInputAge1">Change Age</label>
+        <input type="number" class="form-control" min = "18" id="exampleInputPassword1" placeholder="age" name = "age">
+      </div>
         <hr>
-        <button type = "submit"> change details</button>
+<h5 class = "font-weight-bold"> Change Password :</h5>
+{{#if perror}}
+<p style = "color:red"> Your password is incorrect</p> 
+{{/if}}
+    {{#if emailc}}
+   <p style = "color:red"> Check your email in order to change your password</p>
+    {{/if}}
+   <div class="form-group">
+        <label for="exampleInputPassword1" class="font-weight-bold">Enter existing password</label>
+        <input type="password" data-toggle = "popover1" data-placement = "left" data-content = "Minimum of 8 characters, must contain atleast one special char" class="form-control" id="exampleInputPassword1" placeholder="Password" name = "password" required>
+      </div>
+        <hr>
+        <button type = "submit" class = "btn btn-sm btn-dark"> change details</button>
         </form>
    </div>
 </div>

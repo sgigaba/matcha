@@ -43,7 +43,7 @@ db.query("SELECT * FROM `profile` WHERE `username` = '"+sesh.email+"'", function
           mygen = "gender fluid people exclusively";
       }
   
-        db.query("SELECT * FROM PROFILE  WHERE `matchg` = '"+mygen+"' OR `matchg` = 'anyone' AND `username` <> '"+sesh.email+"' AND username not in (select blocked from "+sesh.email+"block) ORDER BY tempdist ASC", function(req, rezozo){
+        db.query("SELECT * FROM PROFILE  WHERE `matchg` = '"+mygen+"' OR `matchg` = 'anyone' AND `username` <> '"+sesh.email+"' AND username not in (select blocked from `blocked` WHERE username = '"+sesh.email+"' ) AND username not in (select username from `blocked` WHERE `blocked` = '"+sesh.email+"') ORDER BY tempdist ASC", function(req, rezozo){
             var i;
             var customany = [];
             var z;
@@ -165,7 +165,7 @@ db.query("SELECT * FROM `profile` WHERE `username` = '"+sesh.email+"'", function
       console.log(tgen);
       console.log("my gen :");
       console.log(gen);
-      db.query("SELECT * FROM profile WHERE `gender` = '"+pref+"' AND `matchg` = '"+tgen+"' AND `username` <> '"+sesh.email+"' AND username not in (select blocked from "+sesh.email+"block) ORDER BY tempdist ASC", function(req, rezozo){
+      db.query("SELECT * FROM profile WHERE `gender` = '"+pref+"' AND `matchg` = '"+tgen+"' AND `username` <> '"+sesh.email+"' AND username not in (select blocked from `blocked` WHERE username = '"+sesh.email+"' ) AND username not in (select username from `blocked` WHERE `blocked` = '"+sesh.email+"') ORDER BY tempdist ASC", function(req, rezozo){
           var i;
           var custom = [];
           var z;

@@ -13,9 +13,13 @@ app.post('/', function(req, res){
     console.log("reporting yo ass");
     console.log(req.body.name);
     res.render('report', {
-        in :true
+        in :true,
+        block: req.body.name
     });
-    console.log(req.body.rpyo);
+    if (req.body.rpyo){
+
+    }
+    // console.log(req.body.rpyo);
 });
 
 

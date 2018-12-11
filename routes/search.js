@@ -26,7 +26,6 @@ function distan(lat1,lon1,lat2,lon2) {
 
 app.use(express.static(__dirname + '/public'));
 app.get('/', function(req, res){
-
 db.query("SELECT * FROM `notifications` WHERE username = '"+sesh.email+"' AND viewed = 1", function(requ, resu){
     var v;
 
@@ -66,7 +65,7 @@ db.query("SELECT * FROM profile WHERE `username` = '"+sesh.email+"'", function(r
         mygen = "gender fluid people exclusively";
     }
 
-      db.query("SELECT * FROM PROFILE  WHERE `matchg` = '"+mygen+"' OR `matchg` = 'anyone' AND `username` <> '"+sesh.email+"' AND username not in (select blocked from "+sesh.email+"block) ORDER BY tempdist ASC", function(req, results){
+      db.query("SELECT * FROM PROFILE  WHERE `matchg` = '"+mygen+"' OR `matchg` = 'anyone' AND `username` <> '"+sesh.email+"' AND username not in (select blocked from `blocked` WHERE `username` = '"+sesh.email+"') AND username not in (select username from `blocked` WHERE `blocked` = '"+sesh.email+"') ORDER BY tempdist ASC", function(req, results){
         res.render('search', {
             in : true,
             pp: results,
@@ -114,13 +113,14 @@ db.query("SELECT * FROM profile WHERE `username` = '"+sesh.email+"'", function(r
       }
 
       console.log(tgen);
-      db.query("SELECT * FROM profile WHERE (`gender` = '"+pref+"' AND `matchg` = '"+tgen+"' AND `username` <> '"+sesh.email+"' AND username not in (select blocked from "+sesh.email+"block)) OR (`matchg` = 'anyone' AND `gender` = '"+pref+"' AND `username` <> '"+sesh.email+"' AND username not in (select blocked from "+sesh.email+"block)) ORDER BY tempdist ASC", function(req, presults){
+      db.query("SELECT * FROM profile WHERE (`gender` = '"+pref+"' AND `matchg` = '"+tgen+"' AND `username` <> '"+sesh.email+"' AND username not in (select blocked from `blocked` WHERE username = '"+sesh.email+"' ) AND username not in (select username from `blocked` WHERE `blocked` = '"+sesh.email+"')) OR (`matchg` = 'anyone' AND `gender` = '"+pref+"' AND `username` <> '"+sesh.email+"') ORDER BY tempdist ASC", function(req, presults){
           console.log(sesh.email);
           var i;
           var longs = [];
           var lats = [];
           var geo;
           var dists = [];
+          if (presults[0] != undefined){
           for(i = 0; presults[i]; i++){
             if (presults[i].latitude < 0 && presults[i].longitude > 0){
                 longs[i] = presults[i].longitude;
@@ -129,6 +129,7 @@ db.query("SELECT * FROM profile WHERE `username` = '"+sesh.email+"'", function(r
                 db.query("UPDATE `profile` SET tempdist  ='"+dists[i]+"' WHERE `username` = '"+presults[i].username+"'");
             }
           }
+                    }
           res.render('search', {
             in : true,
             pp: presults,
@@ -153,7 +154,6 @@ app.post('/', function(request, res){
     }
     else
     {
-    //if (request.body.submit){
         console.log("likedalot");
         console.log(request.body.name);
         console.log(request.body.profilepic);
@@ -180,7 +180,7 @@ else
         else
         {
             db.query("INSERT INTO `potential` (username, uliked, lusername) VALUES ('"+sesh.email+"', '1', '"+request.body.name+"') ");
-             db.query("INSERT INTO `notifications` (username, user, type, viewed) VALUES ('"+request.body.name+"', '"+sesh.email+"','!! Connected with you !!','1')");
+             db.query("INSERT INTO `notifications` (username, user, type, viewed) VALUES ('"+request.body.name+"', '"+sesh.email+"','!! Liked your profile !!','1')");
         }
     });
 }

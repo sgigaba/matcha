@@ -1,0 +1,16 @@
+<div class = "container">
+    <div class = "row">
+        <h3>Our team will review this user and <br> get back to you within the next week <br>
+            In the mean time; you can block this user.
+        </h3> 
+<div class = "container"> 
+    <form action = "/block" method = "POST" style = "display:inline">
+  <input type = "hidden" name = "user" value = "{{Profile}}">
+  <input type = "hidden" name = "path" value = "{{pp}}">
+  <input type = "hidden" name = "block" value = "block">
+      <button type = "submit" name = "block" class="btn btn-danger" >Block</button>
+  </form>
+  </div>
+
+    </div>
+</div>

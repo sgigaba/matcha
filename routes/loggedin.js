@@ -8,7 +8,6 @@ const formidable = require('formidable');
 var fs = require('fs');
 
 app.get('/', function (req, res) {
-    db.query("CREATE TABLE IF NOT exists "+sesh.email+"block (blocked varchar(250), path varchar(250))");
     db.query("SELECT * FROM `profile` WHERE username = '"+sesh.email+"'", function(req, results){
         if (results[0] != undefined)
         {

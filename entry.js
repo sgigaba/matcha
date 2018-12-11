@@ -29,6 +29,9 @@ const customdist = require('./routes/customdist');
 const deets = require('./routes/deets');
 const report = require('./routes/report');
 const logout = require('./routes/logout');
+const reandb = require('./routes/reanb');
+const pchange = require('./routes/pchange');
+
 //set static path
 app.use(express.static(path.join(__dirname, 'public')));
 app.disable('x-powered-by');
@@ -129,11 +132,11 @@ app.use('/history', history);
 app.use('/search', search);
 
 app.use('/notifications', notifications);
-
+app.use('/reanb', reandb);
 app.use('/custom', custom);
 
 app.use('/mesnot', mesnot);
-
+app.use('/pchange', pchange);
 app.use('/locat', locat);
 app.use('/logout', logout);
 app.use('/block', block);

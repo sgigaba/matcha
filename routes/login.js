@@ -28,7 +28,15 @@ sesh = req.session;
 db.query("SELECT * FROM `profile` WHERE username ='"+email+"'", function(req, results){
     if (results[0] != undefined)
     {
-        res.redirect(303, '/loggedin');
+        db.query("SELECT * FROM `profile` WHERE `username` = '"+email+"'", function (req, re){
+            if (re[0].gender != undefined && re[0].matchg != undefined && re[0].path != undefined){
+                res.redirect(303, '/search');
+            }
+            else{
+                res.redirect(303, '/loggedin');
+            }
+        });
+       
     }
     else
     {
