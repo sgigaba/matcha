@@ -19,18 +19,23 @@ app.post('/', function(req, res){
  var prof = req.body.profile;
  var pic = req.body.profilepic;
 
-// db.query("SELECT * FROM pictures WHERE `username` = '"+sesh.email+"'", function(reque, resu){
-//     pic = resu[0].pics;
-// }); 
-    db.query("SELECT * FROM `views` WHERE `pagevisited` = '"+prof+"'", function(req, result){
+    db.query("SELECT * FROM `views` WHERE `pagevisited` = '"+prof+"' AND `username` = '"+sesh.email+"'", function(req, result){
         if (result[0] != undefined)
         {
             console.log("visited previously");
-            db.query("UPDATE profile SET fame = fame + 10 WHERE username = '"+prof+"'");
         }
         else
         {
-            db.query("INSERT into `views` (username, pagevisited, path) VALUES ('"+sesh.email+"','"+prof+"', '"+pic+"')");
+            db.query("SELECT * FROM `profile` WHERE `username` = '"+sesh.email+"'", function(req, rea){
+                if (rea[0] != undefined){
+                    db.query("INSERT into `views` (username, pagevisited, path) VALUES ('"+sesh.email+"','"+prof+"', '"+rea[0].path+"')");
+                }
+                else{
+                    db.query("INSERT into `views` (username, pagevisited) VALUES ('"+sesh.email+"','"+prof+"')");
+                }
+             
+            });
+         
             db.query("UPDATE profile SET fame = fame + 10 WHERE username = '"+prof+"'");
         }
     });

@@ -7,8 +7,6 @@ const nodemailer = require('nodemailer');
 
 
 
-SALT_ROUNDS = 10;
-
 
 app.get('/', function(req, res){
 
@@ -100,13 +98,7 @@ app.post('/', function(req, res){
 
             });
 
-    //  var rand = Math.trunc(Math.random() * (100000));
-    //  bcrypt.genSalt(SALT_ROUNDS, function (err, salt) {
-    //     bcrypt.hash(req.body.password, salt, function (err, hash) {
-
-    //         db.query("UPDATE `profile` SET `password` = '"+hash+"' WHERE `username` = '"+sesh.email+"'");
-    //     });
-    // });
+  
     });
     }
 

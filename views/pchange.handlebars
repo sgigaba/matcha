@@ -3,6 +3,12 @@
     <h3> Enter your new password :</h3>
     <div class = "row">
     <form action = "/pchange" method = "POST">
+    {{#if perror}}
+<p style = "color:red"> *Your password passwords don't match</p> 
+{{/if}}
+    {{#if pferror}}
+<p style = "color:red"> *Your password has to be atleast 8 characters and contain atleast 1 special character</p> 
+{{/if}}
   <div class="form-group">
         <label for="exampleInputPassword1">Password</label>
         <input type="password" data-toggle = "popover1" data-placement = "left" data-content = "Minimum of 8 characters, must contain atleast one special char" class="form-control" id="exampleInputPassword1" placeholder="Password" name = "password" required>

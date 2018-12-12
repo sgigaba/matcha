@@ -26,14 +26,18 @@ function distan(lat1,lon1,lat2,lon2) {
 
 app.use(express.static(__dirname + '/public'));
 app.get('/', function(req, res){
-db.query("SELECT * FROM `notifications` WHERE username = '"+sesh.email+"' AND viewed = 1", function(requ, resu){
+db.query("SELECT * FROM `notifications` WHERE username = '"+sesh.email+"' AND viewed = 1 AND username not in (select blocked from `blocked` WHERE username = '"+sesh.email+"' ) AND username not in (select username from `blocked` WHERE `blocked` = '"+sesh.email+"')", function(requ, resu){
     var v;
 
     for(v = 0; resu[v]; v++){
         console.log("liked");
     }
 
-
+    db.query("SELECT * FROM `mesnot` WHERE `to` = '"+sesh.email+"' AND `viewed` = '0'", function(re1, re2){
+        var n;
+        for(n = 0; re2[n]; n++){
+            console.log('');
+        }
 db.query("SELECT * FROM profile WHERE `username` = '"+sesh.email+"'", function(req, resul){
   var gen = resul[0].gender;
   var anygen = resul[0].gender;
@@ -65,13 +69,17 @@ db.query("SELECT * FROM profile WHERE `username` = '"+sesh.email+"'", function(r
         mygen = "gender fluid people exclusively";
     }
 
-      db.query("SELECT * FROM PROFILE  WHERE `matchg` = '"+mygen+"' OR `matchg` = 'anyone' AND `username` <> '"+sesh.email+"' AND username not in (select blocked from `blocked` WHERE `username` = '"+sesh.email+"') AND username not in (select username from `blocked` WHERE `blocked` = '"+sesh.email+"') ORDER BY tempdist ASC", function(req, results){
+
+      db.query("SELECT * FROM PROFILE  WHERE (`matchg` = '"+mygen+"' AND `username` <> '"+sesh.email+"' OR `matchg` = 'anyone' AND `username` <> '"+sesh.email+"') AND username not in (select blocked from `blocked` WHERE username = '"+sesh.email+"' ) AND username not in (select username from `blocked` WHERE `blocked` = '"+sesh.email+"') ORDER BY tempdist ASC", function(req, results){
         res.render('search', {
             in : true,
             pp: results,
             gender: genderpref,
+            mnum: n,
+            num: v
              });
   });
+
   }
   else
   {
@@ -113,7 +121,7 @@ db.query("SELECT * FROM profile WHERE `username` = '"+sesh.email+"'", function(r
       }
 
       console.log(tgen);
-      db.query("SELECT * FROM profile WHERE (`gender` = '"+pref+"' AND `matchg` = '"+tgen+"' AND `username` <> '"+sesh.email+"' AND username not in (select blocked from `blocked` WHERE username = '"+sesh.email+"' ) AND username not in (select username from `blocked` WHERE `blocked` = '"+sesh.email+"')) OR (`matchg` = 'anyone' AND `gender` = '"+pref+"' AND `username` <> '"+sesh.email+"') ORDER BY tempdist ASC", function(req, presults){
+      db.query("SELECT * FROM profile WHERE (`gender` = '"+pref+"' AND `matchg` = '"+tgen+"' AND `username` <> '"+sesh.email+"' OR `matchg` = 'anyone' AND `gender` = '"+pref+"' AND `username` <> '"+sesh.email+"') AND username not in (select blocked from `blocked` WHERE username = '"+sesh.email+"' ) AND username not in (select username from `blocked` WHERE `blocked` = '"+sesh.email+"')  ORDER BY tempdist ASC", function(req, presults){
           console.log(sesh.email);
           var i;
           var longs = [];
@@ -135,14 +143,15 @@ db.query("SELECT * FROM profile WHERE `username` = '"+sesh.email+"'", function(r
             pp: presults,
             gender: genderpref,
             num: v,
+            mnum: n
              });
-      });
+    });
 
   }
 });
 });
 
-})
+});
 app.post('/', function(request, res){
     var ses = sesh.email;
 
@@ -187,6 +196,7 @@ else
 
 });
     }
+});
 });
 
 module.exports = app;

@@ -76,6 +76,7 @@ io.on('connection', function(socket){
             db.query(sql, values, function(err, result) {
                 if (err) throw err
             });
+            db.query("INSERT INTO `mesnot` (`from`, `to`) VALUES ('"+sesh.from+"', '"+sesh.to+"')");
              io.sockets.emit('chat', data);
         }
     });
