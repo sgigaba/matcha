@@ -5,13 +5,18 @@ const cookieParser = require('cookie-parser');
 const session = require('express-session');
 
 
-
 app.use(express.static(__dirname + '/public'));
 app.get('/', function(req, res){
-
+    if (req.session == undefined){
+        res.render('home', {
+            off : true
+        });
+    }
+    else{
     res.render('viewprofile',{
         in: true
     });
+}
 });
 
 app.post('/', function(req, res){
@@ -87,9 +92,13 @@ db.query("SELECT * FROM potential WHERE (`username` = '"+prof+"' OR `username` =
         } 
 }
 var able;
+var notable;
 db.query("SELECT path FROM `profile` WHERE `username` = '"+sesh.email+"'", function(req, res1){
-if (res1[0]){
+if (res1[0].path != "nopp.jpg"){
+    console.log(res1[0]);
     able = true;
+}else{
+    notable = true
 }
 res.render('viewprofile', {
     in: true,
@@ -109,7 +118,8 @@ res.render('viewprofile', {
     tags : results[0].tags,
     online: online,
     able : able,
-    can : can
+    can : can,
+    notable : notable
 });
 });
   });

@@ -7,6 +7,9 @@
               {{#if error}}
 <p style = "color:red"> *Please make sure your details meet the requirements</p>
 {{/if}}
+              {{#if sent}}
+<p style = "color:green"> *Please check {{mail}} for your verification code in order to complete the signup process</p>
+{{/if}}
     <form role = "form" action = "/signup" method = "POST">
 
 

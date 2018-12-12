@@ -31,6 +31,7 @@ const report = require('./routes/report');
 const logout = require('./routes/logout');
 const reandb = require('./routes/reanb');
 const pchange = require('./routes/pchange');
+const deleted = require('./routes/deleted');
 
 //set static path
 app.use(express.static(path.join(__dirname, 'public')));
@@ -131,7 +132,7 @@ app.use('/viewprofile', viewprofile);
 app.use('/history', history);
 
 app.use('/search', search);
-
+app.use('/deleted', deleted);
 app.use('/notifications', notifications);
 app.use('/reanb', reandb);
 app.use('/custom', custom);

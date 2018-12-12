@@ -49,12 +49,16 @@
         <div id="pp" class="bg-info padding-inner">
 
           <div class="list-group">
-            <h3>
-              Upload a profile picture </h3>
+           
+             <h3> Upload a profile picture </h3>
+              <hr style = "color:black">
       <form method = "POST" action = "/pp" enctype="multipart/form-data">
         <input type = "file" name = "filetoupload">
         <br>
          <button type = "submit" name = "submit"> Upload </button>
+            </form>
+            <form method = "POST" action = "/deleted">
+            <button type = "submit" name = "submit"> Delete profile pic </button>
             </form>
        </div>
 

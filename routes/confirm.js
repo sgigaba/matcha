@@ -18,13 +18,15 @@ app.post('/', function(req, res){
         {
                 if (results[0] == undefined)
                 {
-                    console.log("nada");
+                   res.render('confirm', {
+                        wrong : true
+                   });
                 }
                 else
                 {
                     console.log("they can");
                     db.query("UPDATE profile SET Verified = '1' WHERE username = '"+user+"'");
-                    res.redirect(303, '/successful');
+                    res.redirect(303, 'login');
                 }
         }
     });

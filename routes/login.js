@@ -25,11 +25,13 @@ app.post('/',function(req, res){
 var email = req.body.email;
 var password = req.body.password;
 sesh = req.session;
-    sesh.email = email;
+sesh.email = email;
 db.query("SELECT * FROM `profile` WHERE username ='"+email+"'", function(req, results){
     if (results[0] != undefined)
     {
-
+        console.log(results[0].Verified);
+        if (results[0].Verified == 1){
+            console.log(sesh);
         bcrypt.compare(password, results[0].password, function(err, rere) {
             if (rere == true){
         
@@ -46,6 +48,13 @@ db.query("SELECT * FROM `profile` WHERE username ='"+email+"'", function(req, re
            });
         }
     });
+
+        }
+        else{
+            res.render('login', {
+                no : "Verify your account before you can login"
+            });
+        }
 
     }
     else

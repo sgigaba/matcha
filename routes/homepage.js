@@ -8,7 +8,12 @@ var bio;
 
 app.use(express.static(__dirname + '/public'));
 
+
 app.get('/', function(req, res){
+    if (req.session == undefined && sesh.email == undefined){
+        res.redirect(303, '/home');
+    }
+    else{
 
     console.log("I'm here now");
     console.log(sesh.email);
@@ -24,6 +29,12 @@ app.get('/', function(req, res){
         }
     });
     db.query("SELECT * FROM `profile` WHERE username = '"+ses+"'", function(req, result){
+        if (result[0].path != undefined){
+            console.log("okay");
+        }
+        else{
+            db.query("UPDATE `profile` SET `path` = 'nopp.jpg' WHERE `username` = '"+ses+"'");
+        }
          bio = result[0].Bio;
          gender = result[0].gender;
          relationship = result[0].relationship;
@@ -47,8 +58,8 @@ app.get('/', function(req, res){
         });
 
     });
- 
-console.log(bio);
+}
+//console.log(bio);
 });
 
 app.post('/', function(req, res) {
