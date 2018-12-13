@@ -134,7 +134,17 @@ app.post('/', function(req, res){
     else if (req.body.submitbio)
     {
         console.log(req.body.bio);
-        db.query("UPDATE `profile` SET bio = '"+req.body.bio+"' WHERE username = '"+ses+"'");
+
+        values = {
+            bio: req.body.bio
+        };
+        const sql = "UPDATE `profile` SET ? WHERE `username`  = '"+ses+"'";
+        db.query(sql, values, function(err, result) {
+            if (err) throw err
+        });
+
+
+      //  db.query("UPDATE `profile` SET bio = '"+req.body.bio+"' WHERE username = '"+ses+"'");
     }
     if (req.body.submittags){
         var tag = [];

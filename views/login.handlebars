@@ -1,6 +1,6 @@
 <div class = "container">
-
-    <form role = "form" action = "/login" method = "POST">
+<h3> Login </h3>
+    <form role = "form" action = "/login" method = "POST" style = "display:inline">
       <div class="form-group mt-5">
         <label for="exampleInputEmail1">Username</label>
         <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter username" name = "email">
@@ -11,6 +11,10 @@
       </div>
       <button type="submit" class="btn btn-primary">Submit</button>
     </form>
+
+
+    <a href = "forgot"><button class="btn btn-primary">Forgot password</button></a>
+
 
    <p style = "color:red"> {{no}}</p>
 </div>

@@ -65,6 +65,7 @@ app.post('/', function(req1, res){
         });
     });
             console.log("Good to go");
+            res.redirect(303, 'login');
         }
     }
   

@@ -56,8 +56,8 @@ body {
 }
 
 .bg3 {
-	background-color: #b79aca;
-	/* background-image: url("blue-blue-background-botanical-1445416.jpg"); */
+	/*background-color: #b79aca;*/
+	background-image: url("ignasi_pattern_s.png"); 
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -69,7 +69,20 @@ body {
 }
 
 .bg5 {
-	background-color: #b79aca;
+	background-image: url("ignasi_pattern_s.png"); 
+	/* background-color: #b79aca; */
+	position: fixed;
+	top: 0;
+	left: 0;
+	background-repeat:0;
+	z-index: -99;
+	/* Preserve aspet ratio */
+	min-width: 100%;
+	min-height: 100%;
+}
+
+.bg8 {
+	background-image: url("leaves-pattern.png"); 
 	position: fixed;
 	top: 0;
 	left: 0;

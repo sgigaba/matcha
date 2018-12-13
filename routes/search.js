@@ -4,7 +4,7 @@ var db = require('../config/db');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 
-// I got the following function from Stack overflow ----->
+//Stack overflow ----->
 function distan(lat1,lon1,lat2,lon2) {
     var R = 6371; // Radius of the earth in km
     var dLat = deg2rad(lat2-lat1);  // deg2rad below
@@ -22,16 +22,16 @@ function distan(lat1,lon1,lat2,lon2) {
   function deg2rad(deg) {
     return deg * (Math.PI/180)
   }
-//All of it 
+//<--------
 
 app.use(express.static(__dirname + '/public'));
 app.get('/', function(req, res){
-    if (req.session == undefined && sesh.email == undefined){
-        res.render('home', {
-            off : true
-        });
-    }
-    else{
+    // if (req.session == undefined && sesh.email == undefined){
+    //     res.render('home', {
+    //         off : true
+    //     });
+    // }
+    // else{
 db.query("SELECT * FROM `notifications` WHERE username = '"+sesh.email+"' AND viewed = 1 AND username not in (select blocked from `blocked` WHERE username = '"+sesh.email+"' ) AND username not in (select username from `blocked` WHERE `blocked` = '"+sesh.email+"')", function(requ, resu){
     var v;
 
@@ -203,7 +203,7 @@ else
 });
     }
 });
-    }
+    //}
 });
 
 module.exports = app;

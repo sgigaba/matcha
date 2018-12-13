@@ -1,8 +1,9 @@
 
+<div class = "bg8"> </div>
 
 <br>
 <div class="form-group col-md-4">
-<form action = "custom" method = "POST" >
+<form action = "custom" method = "POST" style = "display:inline">
      <p>Filter by age </p>
       <input type = "number" name = "minage">
     <input type = "number" name = "maxage">
@@ -29,20 +30,23 @@
 <label class="checkbox-inline"><input type="checkbox" name = "tags" value="family">#family<i class="fas fa-child"></i></label>
 <br>
    <button class="btn btn-warning" >Custom search</button>
- </div>
+
 </form>
+ </div>
+ <hr>
+ <hr>
 <br>
 <a href = "/history"><button class="btn btn-lg btn-secondary" >Profile views <i class="far fa-eye"></i></button></a>
 <a href = "block"><button class="btn btn-lg btn-danger" >Blocked Users</button></a>
 <div class="container">
   <div class="row">
-    <div class="col-12 col-lg-6 mt-50">
-      <div class="panel panel-primary">
+
       {{#each pp}}
+          <div class="col-12 col-lg-4 mt-50">
+      <div class="panel panel-primary">
        <div class="panel-heading"><h3>{{this.username}}</h3></div>
-        <div class="panel-body"><img src="uploads{{this.path}}" class="img-responsive" style= "width:350px" alt="Image"></div>
+        <div class="panel-body"><img src="uploads{{this.path}}" class="img-responsive" width = "300px" height = "300px" alt="Image"></div>
                 <div class="panel-footer">
-        
                 <form action = "/viewprofile" method = "POST" style = "display:inline">
                 <input type = "hidden" name = "profile" value = "{{this.username}}">
                  <input type = "hidden" name = "profilepic" value = "{{this.path}}">
@@ -50,10 +54,13 @@
                 <button class="btn btn-lg btn-info" ><i class="fas fa-fire"></i>{{this.fame}}</button>
                </form>
           <button class="btn btn-outline-dark" > <i class="fas fa-map-marked-alt"></i>{{this.tempdist}}km</i></button>
+          <hr>
+          <hr>
                   </div>
+                        </div>
+    </div>
         {{/each}}
         
-      </div>
-    </div>
+
     </div>
     </div>
