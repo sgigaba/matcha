@@ -57,17 +57,20 @@ A dating site that allows users to connect with others based on romantic prefere
             - head.handlebars
             - nav.handlebars
                 * This contains the structure of the nav bar which is consistent throughout application.
-    - routes 
+    - routes (Handles the back end functionality and the rendering of views) 
         - block.js
+            * Handles the websites block functionality. User is able to block and unblock a specific user. Ensures that a blocked user is not able to view your profile or send you a chat.
         - chatr.js
+            * Handles the chat functionality. Ensures that a user is only able to chat with another user if they have both liked each other.
         - confirm.js
+            * Validates the confirmation code a user receives via email when creating an account, ensures the user has confirmes their email adress before accessing the website.
         - custom.js
-        - customdist.js
-        - deets.js
-        - deleted.js
-        - forgot.js
-        - history.js
-        - home.js
+            * Handles the back end functionality of the recommended matches based on a users predifned sexuality, preferences, interests (tags) and geo location.
         - login.js
+            * Handles user login by cross checking a users email and password.
         - signup.js
+            * Handles user signup by taking 
         - notifications.js
+    - helpers
+        - helper.js
+            * Custom code for certain conditions that alter the views.
