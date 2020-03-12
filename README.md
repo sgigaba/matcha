@@ -1,12 +1,12 @@
-# Camagru / Matcha
+# Matcha
 
 A dating site that allows users to connect with others based on romantic preference/interests and geo location.
 
 ## Requirements
 
-- npm v6.13.4 : 
-- Node v12.16.1 : 
-- MAMP : 
+- npm v6.13.4 : https://www.npmjs.com/get-npm
+- Node v12.16.1 : https://nodejs.org/en/download/
+- MAMP : https://bitnami.com/stack/mamp
 
 ## Installation
 
