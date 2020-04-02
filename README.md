@@ -33,12 +33,15 @@ A dating site that allows users to connect with others based on romantic prefere
 
 ## Code Breakdown
 - Back end technologies
+    - JavaScript
     - node.js
     - express
 
 - Front-end technologies
     - handlebars
     - bootstrap
+    - HTML
+    - CSS
 
 - libraries/modules/dependencies
     - body-parser
