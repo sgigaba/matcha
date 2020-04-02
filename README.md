@@ -79,4 +79,7 @@ A dating site that allows users to connect with others based on romantic prefere
             * Custom code for certain conditions that alter the views.
     - config
         - db.js
-            * Handles the databse connection 
+            * Handles the databse connection
+## Testing
+
+https://github.com/wethinkcode-students/corrections_42_curriculum/blob/master/matcha.markingsheet.pdf
